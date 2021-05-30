@@ -1,0 +1,39 @@
+
+###########################################################################
+#                       Django Project configuration                      #
+###########################################################################
+#Notice : Change the path according your requirment
+
+LoadFile "C:/users/mr.nobady/appdata/local/programs/python/python39/python39.dll"
+LoadModule wsgi_module "C:/users/mr.nobady/envs/django-project/lib/site-packages/mod_wsgi/server/mod_wsgi.cp39-win_amd64.pyd"
+<IfModule wsgi_module>
+
+WSGIScriptAlias / "C:/xampp/htdocs/Django/Myproject/Myproject/wsgi.py"
+WSGIPythonPath "C:/xampp/htdocs/Django/Myproject/"
+WSGIPythonHome "C:/users/mr.nobady/envs/django-project"
+
+#configuration wsgi.py access rights ：
+<Directory "djangoPath/djangoName">
+<Files "wsgi.py">
+Require all granted
+</Files>
+</Directory>
+
+#configure static file paths and access permissions ：
+Alias /static "djangoPath/static/"
+<Directory "djangoPath/static/">
+AllowOverride None
+Options None
+Require all granted
+</Directory>
+
+#configure multimedia file path and access rights ：( optional )
+Alias /media "djangoPath/media/"
+<Directory "djangoPath/media/">
+AllowOverride None
+Options None
+Require all granted
+</Directory>
+
+
+</IfModule>
